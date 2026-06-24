@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">ESP32 EMG Prosthetic Arm Wiring Diagram</title>
+  <desc id="desc">Diagram showing the BioAmp EXG Pill connected to ESP32 GPIO 34 and five MG90S servos powered by an external 5 volt supply with common ground.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .card { fill: #ffffff; stroke: #1f2937; stroke-width: 2; rx: 16; ry: 16; }
+      .label { font-family: Arial, Helvetica, sans-serif; fill: #111827; font-size: 24px; font-weight: 700; }
+      .small { font-family: Arial, Helvetica, sans-serif; fill: #374151; font-size: 18px; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; fill: #4b5563; font-size: 16px; }
+      .wire { stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .signal { stroke: #2563eb; }
+      .power { stroke: #ef4444; }
+      .ground { stroke: #111827; }
+      .pin { fill: #e5e7eb; stroke: #6b7280; stroke-width: 1.5; rx: 8; ry: 8; }
+      .legend { fill: #eef2ff; stroke: #4338ca; stroke-width: 1.5; rx: 14; ry: 14; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900" />
+
+  <text class="label" x="60" y="60">ESP32 EMG Prosthetic Arm Wiring</text>
+  <text class="small" x="60" y="92">Relaxed muscle opens the hand. Flexed muscle closes the hand.</text>
+
+  <rect class="card" x="70" y="160" width="300" height="220" />
+  <text class="label" x="120" y="220">BioAmp EXG Pill</text>
+  <text class="small" x="120" y="260">EMG sensor output</text>
+  <rect class="pin" x="110" y="300" width="220" height="36" />
+  <text class="tiny" x="130" y="324">OUT / Signal</text>
+  <rect class="pin" x="110" y="345" width="220" height="36" />
+  <text class="tiny" x="130" y="369">VCC / 3.3V or 5V supply</text>
+  <rect class="pin" x="110" y="390" width="220" height="36" />
+  <text class="tiny" x="130" y="414">GND</text>
+
+  <rect class="card" x="520" y="130" width="350" height="300" />
+  <text class="label" x="610" y="190">ESP32</text>
+  <text class="small" x="610" y="225">ADC and servo control</text>
+  <rect class="pin" x="560" y="260" width="250" height="34" />
+  <text class="tiny" x="580" y="283">GPIO 34 - EMG input</text>
+  <rect class="pin" x="560" y="305" width="250" height="34" />
+  <text class="tiny" x="580" y="328">GPIO 18 - Servo 1</text>
+  <rect class="pin" x="560" y="350" width="250" height="34" />
+  <text class="tiny" x="580" y="373">GPIO 14 - Servo 2</text>
+  <rect class="pin" x="560" y="395" width="250" height="34" />
+  <text class="tiny" x="580" y="418">GPIO 15 - Servo 3</text>
+
+  <rect class="card" x="970" y="130" width="350" height="300" />
+  <text class="label" x="1028" y="190">Servo Group</text>
+  <text class="small" x="1028" y="225">MG90S finger motors</text>
+  <rect class="pin" x="1010" y="260" width="250" height="34" />
+  <text class="tiny" x="1030" y="283">GPIO 13 - Servo 4</text>
+  <rect class="pin" x="1010" y="305" width="250" height="34" />
+  <text class="tiny" x="1030" y="328">GPIO 19 - Servo 5</text>
+  <rect class="pin" x="1010" y="350" width="250" height="34" />
+  <text class="tiny" x="1030" y="373">External 5V supply</text>
+
+  <rect class="card" x="390" y="560" width="620" height="210" />
+  <text class="label" x="605" y="620">Common Ground</text>
+  <text class="small" x="490" y="660">BioAmp GND, ESP32 GND, and servo power GND must all connect together.</text>
+
+  <rect class="legend" x="60" y="500" width="280" height="150" />
+  <text class="label" x="90" y="545">Legend</text>
+  <line class="wire signal" x1="90" y1="585" x2="190" y2="585" />
+  <text class="tiny" x="205" y="592">Signal / analog path</text>
+  <line class="wire power" x1="90" y1="615" x2="190" y2="615" />
+  <text class="tiny" x="205" y="622">5V power path</text>
+  <line class="wire ground" x1="90" y1="645" x2="190" y2="645" />
+  <text class="tiny" x="205" y="652">Ground reference</text>
+
+  <!-- Signal wire from BioAmp to ESP32 -->
+  <path class="wire signal" d="M 330 318 C 430 318, 450 288, 560 278" />
+  <circle cx="330" cy="318" r="8" fill="#2563eb" />
+  <circle cx="560" cy="278" r="8" fill="#2563eb" />
+
+  <!-- Servo control wires -->
+  <path class="wire signal" d="M 810 322 C 880 322, 920 220, 1010 278" />
+  <path class="wire signal" d="M 810 322 C 890 360, 930 290, 1010 323" />
+  <path class="wire signal" d="M 810 322 C 890 420, 940 330, 1010 368" />
+  <circle cx="810" cy="322" r="7" fill="#2563eb" />
+
+  <!-- Power to servos -->
+  <path class="wire power" d="M 1160 385 C 1160 470, 1110 485, 980 485 C 860 485, 820 460, 760 460" />
+  <circle cx="1160" cy="385" r="8" fill="#ef4444" />
+
+  <!-- Ground connections -->
+  <path class="wire ground" d="M 215 426 C 215 500, 320 520, 420 560" />
+  <path class="wire ground" d="M 695 430 C 680 490, 650 520, 620 560" />
+  <path class="wire ground" d="M 1185 385 C 1100 470, 1060 510, 980 560" />
+
+  <text class="tiny" x="100" y="760">GPIO 34 reads the BioAmp EMG signal. The threshold logic in firmware opens or closes all fingers together.</text>
+  <text class="tiny" x="100" y="790">Use an external 5V supply for the servos and keep every ground tied together for stable readings and motion.</text>
+</svg>
